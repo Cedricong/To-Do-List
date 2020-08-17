@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h2 id="title">My Shopping List</h2>
+	<p>Enter a new item: <input type="text" name="shopping" id="shopping">
+		<button onClick="addPressed()">Add</button>
+	</p>
+	<ul id="itemList">
+	</ul>
+	<script type="text/javascript">
+	// We put here to ensure it is fully loaded first
+	var inputEl = document.getElementById("shopping")
+	var title = document.getElementById("title")
+	inputEl.addEventListener('focus', function(){
+		title.style.color = "red";
+	})
+	inputEl.addEventListener('blur', function(){
+		title.style.color = "black";
+	})
+	function addPressed(){
+		var newLi = document.createElement("li");
+		var newBtn = document.createElement("button")
+		newBtn.innerHTML = "Delete"
+		var shoppingItem = document.getElementById("shopping").value
+		newLi.innerHTML = shoppingItem
+		var ulItem = document.getElementById("itemList");
+		ulItem.appendChild(newLi);
+		newBtn.addEventListener('click', function(){
+			ulItem.removeChild(newLi)
+		})
+		newLi.appendChild(newBtn)
+		document.getElementById("shopping").value = "";
+	}
+</script>
+</body>
+</html>
